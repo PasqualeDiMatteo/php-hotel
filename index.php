@@ -36,6 +36,15 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+
+$parkings = isset($_GET['parking']);
+
+var_dump($parkings);
+
+if ($parkings) {
+    $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +65,17 @@ $hotels = [
         <!-- Title -->
         <h1>Hotels</h1>
         <hr>
+
+        <form action="index.php">
+            <div class="form-check mb-4">
+                <input class="form-check-input" type="radio" name="parking" id="with-parking" value="true" <?= isset($_GET['parking']) ? 'checked' : '' ?>>
+                <label class="form-check-label" for="with-parking">
+                    With Parking
+                </label>
+            </div>
+            <button class="btn btn-primary">Filtra</button>
+            <button class="btn btn-danger"><a href="index.php" class="text-white text-decoration-none">Annulla</a></button>
+        </form>
         <!-- Table -->
         <table class="table mt-5">
             <!--Table Head -->
