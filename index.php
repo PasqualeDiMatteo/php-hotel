@@ -38,9 +38,15 @@ $hotels = [
 ];
 
 $value_parking = isset($_GET['parking']);
+$vote_hotel = $_GET['vote_hotel'] ?? "";
+
 
 if ($value_parking) {
     $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
+}
+
+if ($vote_hotel) {
+    $hotels = array_filter($hotels, fn ($hotel) => $hotel['vote'] == $vote_hotel);
 }
 
 ?>
@@ -71,6 +77,12 @@ if ($value_parking) {
                     With Parking
                 </label>
             </div>
+            <select class="form-select mb-4" name="vote_hotel">
+                <option selected>Open this select menu</option>
+                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                    <option value="<?= $i ?>" <?= $vote_hotel == $i ? 'selected' : '' ?>><?= $i ?></option>
+                <?php endfor ?>
+            </select>
             <button class="btn btn-primary">Filtra</button>
             <button class="btn btn-danger"><a href="index.php" class="text-white text-decoration-none">Annulla</a></button>
         </form>
