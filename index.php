@@ -37,11 +37,9 @@ $hotels = [
     ],
 ];
 
-$parkings = isset($_GET['parking']);
+$value_parking = isset($_GET['parking']);
 
-var_dump($parkings);
-
-if ($parkings) {
+if ($value_parking) {
     $hotels = array_filter($hotels, fn ($hotel) => $hotel['parking']);
 }
 
