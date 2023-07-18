@@ -78,7 +78,7 @@ if ($vote_hotel) {
                 </label>
             </div>
             <select class="form-select mb-4" name="vote_hotel">
-                <option selected>Open this select menu</option>
+                <option value="">Open this select menu</option>
                 <?php for ($i = 1; $i <= 5; $i++) : ?>
                     <option value="<?= $i ?>" <?= $vote_hotel == $i ? 'selected' : '' ?>><?= $i ?></option>
                 <?php endfor ?>
