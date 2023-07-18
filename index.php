@@ -46,25 +46,46 @@ $hotels = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous' />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <title>PHP Hotel</title>
 </head>
 
 <body>
-    <h1>Hotels</h1>
-    <hr>
-    <?php foreach ($hotels as $hotel) : ?>
-        <ul>
-            <li><?= $hotel["name"] ?></li>
-            <li><?= $hotel["description"] ?></li>
-            <?php if ($hotel["parking"] === true) : ?>
-                <li><i class="fa-solid fa-check"></i></li>
-            <?php else : ?>
-                <li><i class="fa-solid fa-x"></i></li>
-            <?php endif ?>
-            <li><?= $hotel["vote"] ?></li>
-            <li><?= $hotel["distance_to_center"] ?></li>
-        </ul>
-    <?php endforeach; ?>
+    <div class="container mt-4">
+        <!-- Title -->
+        <h1>Hotels</h1>
+        <hr>
+        <!-- Table -->
+        <table class="table mt-5">
+            <!--Table Head -->
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Parking</th>
+                    <th scope="col">Vote</th>
+                    <th scope="col">Distance from center</th>
+                </tr>
+            </thead>
+            <!-- Table Body -->
+            <tbody>
+                <?php foreach ($hotels as $hotel) : ?>
+                    <tr>
+                        <th scope="row"><?= $hotel["name"] ?></th>
+                        <td><?= $hotel["description"] ?></td>
+                        <?php if ($hotel["parking"] === true) : ?>
+                            <td><i class="fa-solid fa-check"></td>
+                        <?php else : ?>
+                            <td><i class="fa-solid fa-x"></td>
+                        <?php endif ?>
+                        <td><?= $hotel["vote"] ?></td>
+                        <td><?= $hotel["distance_to_center"] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
